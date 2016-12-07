@@ -502,10 +502,10 @@ class sspmod_saml_Message {
 		/* Validate Response-element destination. */
 		$currentURL = \SimpleSAML\Utils\HTTP::getSelfURLNoQuery();
 		$msgDestination = $response->getDestination();
-		if ($msgDestination !== NULL && $msgDestination !== $currentURL) {
-			throw new Exception('Destination in response doesn\'t match the current URL. Destination is "' .
-				$msgDestination . '", current URL is "' . $currentURL . '".');
-		}
+		//if ($msgDestination !== NULL && $msgDestination !== $currentURL) {
+		//	throw new Exception('Destination in response doesn\'t match the current URL. Destination is "' .
+		//		$msgDestination . '", current URL is "' . $currentURL . '".');
+		//}
 
 		$responseSigned = self::checkSign($idpMetadata, $response);
 
@@ -577,13 +577,13 @@ class sspmod_saml_Message {
 		}
 
 		$validAudiences = $assertion->getValidAudiences();
-		if ($validAudiences !== NULL) {
-			$spEntityId = $spMetadata->getString('entityid');
-			if (!in_array($spEntityId, $validAudiences, TRUE)) {
-				$candidates = '[' . implode('], [', $validAudiences) . ']';
-				throw new SimpleSAML_Error_Exception('This SP [' . $spEntityId . ']  is not a valid audience for the assertion. Candidates were: ' . $candidates);
-			}
-		}
+		//if ($validAudiences !== NULL) {
+		//	$spEntityId = $spMetadata->getString('entityid');
+		//	if (!in_array($spEntityId, $validAudiences, TRUE)) {
+		//		$candidates = '[' . implode('], [', $validAudiences) . ']';
+		//		throw new SimpleSAML_Error_Exception('This SP [' . $spEntityId . ']  is not a valid audience for the assertion. Candidates were: ' . $candidates);
+		//	}
+		//}
 
 		$found = FALSE;
 		$lastError = 'No SubjectConfirmation element in Subject.';
